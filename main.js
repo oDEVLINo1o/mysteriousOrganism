@@ -14,10 +14,13 @@ const returnRandBase = () => {
     return newStrand
   }
   
+  // Factiory function for creating DNA strands
   const pAequorFactory = (num, bases) => {
     return {
       specimenNum: num,
       dna: bases,
+
+      // meathod to mutate a DNA strand
       mutate () {
         const index = Math.floor(Math.random() * this.dna.length);
         let bTest = returnRandBase();
@@ -26,6 +29,8 @@ const returnRandBase = () => {
         }
         this.dna[index] = bTest;
       },
+
+      // meathod to compare 2 DNA strands
       compareDNA (newBases) {
         let same = 0;
         for (let i = 0; i < this.dna.length; i++) {
@@ -37,6 +42,8 @@ const returnRandBase = () => {
   
         console.log(`specimen ${this.specimenNum} and specimen ${newBases.specimenNum} have ${same}% DNA in common.`)
       },
+
+      // meathod to tell if a DNA strand will survive
       willLikelySurvive () {
   
         let CorG = 0;
@@ -53,6 +60,8 @@ const returnRandBase = () => {
           return false;
         }
       },
+
+      // Meathod to create 30 DNA that will survive
       create30 () {
         let i = 1;
         let strand = [];
@@ -72,11 +81,15 @@ const returnRandBase = () => {
 
 
 
-// provides 30 DNA strands that are lekely to survive  
+// create 2 DNA strands
 const test1 = pAequorFactory(1, mockUpStrand());
 const test2 = pAequorFactory(2, mockUpStrand());
+
+// compare 2 DNA strands
 test1.compareDNA(test2);
-test1.create()
+
+// provides 30 DNA strands that are lekely to survive 
+test1.create();
   
 
   
